@@ -36,9 +36,28 @@ specifically patched for the Samsung Galaxy Book 4 series.
 %meson_install
 
 %files
+# The libraries
 %{_libdir}/libfprint-2.so.*
+%{_libdir}/libfprint-2.so
+
+# Development headers and pkgconfig
+%{_includedir}/libfprint-2/
+%{_libdir}/pkgconfig/libfprint-2.pc
+
+# Udev rules - CRITICAL for hardware access
+/usr/lib/udev/hwdb.d/60-autosuspend-libfprint-2.hwdb
+/usr/lib/udev/rules.d/70-libfprint-2.rules
+
+# GObject Introspection data
 %{_libdir}/girepository-1.0/FPrint-2.0.typelib
 %{_datadir}/gir-1.0/FPrint-2.0.gir
+
+# AppData / Metainfo
+%{_datadir}/metainfo/org.freedesktop.libfprint.metainfo.xml
+
+# Excludes the installed tests to keep the package clean
+%exclude %{_libexecdir}/installed-tests
+%exclude %{_datadir}/installed-tests
 
 %changelog
 * Tue Mar 31 2026 Hichambel - 1.94.10-100.galaxybook
