@@ -29,7 +29,7 @@ specifically patched for the Samsung Galaxy Book 4 series.
 %setup -q -n libfprint-samsung-galaxy-book4-fix
 
 %build
-%meson -Ddrivers=focaltech_moc -Ddoc=false -Dintrospection=enabled
+%meson -Ddrivers=focaltech_moc -Ddoc=false -Dintrospection=true
 %meson_build
 
 %install
